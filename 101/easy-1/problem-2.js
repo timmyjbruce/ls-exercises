@@ -1,8 +1,7 @@
 // Question 
 // =============================================================================
-// Log all even numbers from 1 to 99, inclusive, to the console, with each
-// number on a separate line.
-
+// Log all odd numbers from 1 to 99, inclusive, to the console, with each number
+// on a separate line.
 
 // PEDAC
 // =============================================================================
@@ -15,13 +14,12 @@
 
 // Examples
 // ---------------------------------------------------------
-// 
 // Should log:
-// 4
-// 6
+// 1
+// 3
 // ...
-// 96
-// 98
+// 97
+// 99
 
 // Datastructure
 // ---------------------------------------------------------
@@ -30,7 +28,7 @@
 // Algorithm
 // ---------------------------------------------------------
 // Input: nothing
-// Output: Example 1
+// Output: See examples
 
 // Start of program
 // Get start number
@@ -42,12 +40,4 @@
 
 // Solution:
 
-for (i = 2; i < 100; i += 2) {
-  console.log(i)
-}
-
-// or this which preserves the range (1-99) used in the question:
-
-for (i = 1; i < 100; i += 1) {
-  if (i % 2 === 0) console.log(i);
-}
+for (let i = 1; i <= 99; i += 2) console.log(i);
