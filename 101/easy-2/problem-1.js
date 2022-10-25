@@ -81,4 +81,4 @@ console.log(
 // Thoughts /improvements needed
 // ---------------------------------------------------------
 // Way overcomplicated it, Launchschool solution is much simpler. Need to avoid
-// jumping to methods too soon, especially if simpler ways.
+// jumping to methods too soon and consider simpler lookups.
