@@ -67,6 +67,5 @@ console.log(halvsies([]));                 // [[], []]
 
 // Thoughts / improvements
 // ---------------------------------------------------------
-
 // 'Simplified version' is harder to understand.
 
