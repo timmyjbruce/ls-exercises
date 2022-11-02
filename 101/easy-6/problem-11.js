@@ -61,8 +61,6 @@ function reverse(arr) {
   return arr;
 }
 
-
-
 let list = [1, 2, 3, 4];
 let result = reverse(list);
 console.log(result);

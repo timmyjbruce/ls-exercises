@@ -90,11 +90,9 @@ function isBalanced(str) {
   return true;
 }
 
-
 function filterParenthesisFromString(str) {
   return str.split('').filter(char => char === ')' || char === '(' );
 }
-
 function matchAndRemove(array) {
   
 

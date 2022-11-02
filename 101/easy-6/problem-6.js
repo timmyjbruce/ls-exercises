@@ -51,6 +51,7 @@
 // Per intitial algo
 function sequence(num) {
   let array = [];
+
   while (num >= 1) {
     array.unshift(num);
     num--
@@ -69,6 +70,7 @@ console.log(sequence(1)); // [1]
 
 // Thoughts / improvements
 // ---------------------------------------------------------
-
+// Prefer while loop in this instance over launch scchol solution, no real need
+// for another variable;
 
 

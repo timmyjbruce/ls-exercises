@@ -44,6 +44,7 @@
 
 // Code
 // ---------------------------------------------------------
+
 function reverseWords(str) {
   const REVERSAL_LENGTH = 5;
   let arr = str.split(' ');
@@ -65,11 +66,11 @@ console.log(reverseWords('Walk around the block'));
 console.log(reverseWords('Launch School'));
 
 
-
 // Thoughts / improvements
 // ---------------------------------------------------------
 // Need to remember that if areas of a function are looking complex, its easy to
 // break it out into a seperate function.
+
 
 // Further exploration
 // ---------------------------------------------------------
