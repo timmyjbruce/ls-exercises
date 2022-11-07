@@ -70,10 +70,9 @@ function rotateRightmostDigits(number, count) {
   let shifted = number[index] || '';
 
   return parseInt(start + end + shifted);
-
 }
 
-// Alternate
+// Alternate using array methods
 function rotateRightmostDigits(number, count) {
   array = String(number).split('');
   let shifted = array.splice(count * -1, 1);
@@ -94,16 +93,6 @@ function rotateRightmostDigits(num, position) {
             .join('')
           );
 }
-
-// // Alternate clearer
-// function rotateRightmostDigits(number, count) {
-//   array = String(number).split('');
-  
-//   let shiftedNum = array.splice(count * -1, 1);
-//   let shiftedArray = array.concat(shiftedNum);
-
-//   return parseInt(shiftedArray.join(''));
-// }
 
 
 console.log(rotateRightmostDigits(735291, 1));      // 735291
