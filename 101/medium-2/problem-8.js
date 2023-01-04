@@ -19,19 +19,17 @@
 // Problem
 // ---------------------------------------------------------
 // Input: String
-// Output: None
-// Side effect: Log longest sentence and string containing word count to console
+// Output: None, but statement looged to console
 
-// Explicit requirements:
-// - Find the longest sentence in a given string arg
-// - Sentences end with ['.', '!', '?']
-// - Any other characters are spaces, if not then words
-// - All case and punctuation from original string should be preserved
-// - Length is based on word count not char count
+// Explicit requirement:
+// - Log the longest sentence and word count to the console.
+// - Words are flanked by spaces or sentence ending characters.
+// - Sentences end in fluustops, exclamation marks of question marks.
+// - Sentences must be unaltered
 
-// Implicit requirements:
-// - Second string to log: 'The longest sentence has XX words.'
-
+// Implicit requirement:
+// - Logged statment is a concatenated string
+//
 
 // Examples
 // ---------------------------------------------------------
@@ -39,59 +37,106 @@
 
 // Datastructure
 // ---------------------------------------------------------
-// Array of sentence elements containing subArrays of words eg:
-// [[word, word], [word, word, word, word], etc]
-
-// Array of chars to split on:
-// ['.', '!', '?']
+// Array to hold individual sentences
 
 // Algorithm
 // ---------------------------------------------------------
-// Start 'longText', set 'string'
-// Set 'splitChars' to array in above section
-// Set 'sentences' and array with one empty subarray.
-// Set sentence to empty string;
+// Start longestSentence, set text
 
-// Start splitWords
-// - iterate through string chars
-// - if char = space, push word characters from string start to snetences subArray
-// - if char eqals a splitChar, send word to sentences as a new array
+// Set 'sentences' to a the value of sentencesWithin, with an arg of 'text'
+// Sort array, longest to shortest sentences
+// Log first element of sentences array
+// Run countWords on first element of sentences array
+// Log number with concatenated strings
+
+// Start sentencesWithin, set text
+//  - Split text into sentences sperated by commas
+//  - Iterate through each sentence and split any containing '!' 
+//  - Flatten sentences array
+//  - Iterate through each sentence and split any containing '?' 
+//  - Flatten array
+// Return array
+
+// Start alt sentenceWithin version, set text
+// - Set sentences to empty array
+// - Set endChars to array with the 3x end chars
+// - While text length greater than zero
+// - Set nextIndexs to 
+//    - iterate through endChars
+//    - get index of next occurence of endChar
+//    - reduce to array to lowest value thats not -1
+// - Cut next sentence it from text at indexand push to sentences
+// - Return sentences
 
 
-// Reduce sentences array to longest sentence
-// Flatten array and convert to string with spaces, assign to 'sentecne'
+// Start countWords, set text
+// Set arr to an arr of words from text.
+// Return length of array
 
-// Log string
-// Log explanatory sentence including array
 
 // Code
 // ---------------------------------------------------------
 
-function longestSentence(string) {
-  let splitChars = ['.', '!', '?'];
-  let sentences = [[]];
-  let longest = '';
+// function longestSentence(text) {
+//   let sentences = sentencesWithin(text);
+//   sentences.sort((a, b) => wordCount(b) - wordCount(a))
 
-  for (let idx = 0; idx < string.length - 1; idx++) {
-    console.log('idx: ' + idx)
-    let char = string[idx];
-    let lastBreak = 0; 
-    console.log('char: ' + char)
-    if (char === ' ' || splitChars.includes(char)) {
-      console.log('if statement passed')
-      sentences[sentences.length - 1].push(string.split([lastBreak, idx]));
-      console.log('Logged')
-      lastBreak = idx + 1;
-      if (splitChars.includes(char)) {
-        sentences.push([]);
-        lastBreak += 1;
-      }
-    }
+//   console.log(
+//     `${sentences[0]}\nThe longest sentence has ` +
+//     `${wordCount(sentences[0])} words.\n`
+//   );
+// }
+
+// function sentencesWithin(text) {
+//   let sentences = [];
+
+//   while (text.length > 0) {
+//     let sliceIndex = indexOfNextEndChar(text) + 1;
+//     sentences.push(text.slice(0, sliceIndex).trim())
+//     text = text.slice(sliceIndex)
+//   }
+//   return sentences;
+// }
+
+// function indexOfNextEndChar(text) {
+//   const END_CHARS = ['.', '!', '?'];
+
+//   let endCharIndexes = END_CHARS
+//     .map(char => text.indexOf(char))
+//     .sort((a, b) => a - b);
+
+//   let nextIndex = endCharIndexes.find(ele => ele > 0);
+//   return nextIndex;
+// };
+
+// function wordCount(sentence) {
+//   return sentence.split(' ').length
+// }
+
+
+// Simplified version
+
+function longestSentence(text) {
+  let sentences = [];
+  let regex = /[\.!?]/
+
+  while (text.length > 0) {
+    let indexNextEndChar = regex.exec(text).index + 1;
+    sentences.push(text.slice(0, indexNextEndChar).trim());
+    text = text.slice(indexNextEndChar);
   }
-  console.log(sentences);
+
+  sentences.sort((a, b) => numWords(b) - numWords(a));
+
+  console.log(
+    sentences[0] +
+    `\nThe longest sentence has ${numWords(sentences[0])} words.\n`
+  );
 }
 
-
+function numWords(sentence) {
+  return sentence.split(' ').length
+}
 
 let longText =
   'Four score and seven years ago our fathers brought forth on this ' +
@@ -120,12 +165,12 @@ let longerText = longText +
   'and that government of the people, by the people, for the people, ' +
   'shall not perish from the earth.';
 
-// longestSentence(longText);
+longestSentence(longText);
 // Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.
 //
 // The longest sentence has 30 words.
 
-// longestSentence(longerText);
+longestSentence(longerText);
 // It is rather for us to be here dedicated to the great task remaining before us -- that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion -- that we here highly resolve that these dead shall not have died in vain -- that this nation, under God, shall have a new birth of freedom -- and that government of the people, by the people, for the people, shall not perish from the earth.
 //
 // The longest sentence has 86 words.
@@ -135,14 +180,16 @@ longestSentence("Where do you think you're going? What's up, Doc?");
 //
 // The longest sentence has 6 words.
 
-// longestSentence("To be or not to be! Is that the question?");
+longestSentence("To be or not to be! Is that the question?");
 // To be or not to be!
 //
 // The longest sentence has 6 words.
 
 
+
 // Thoughts / improvements
 // ---------------------------------------------------------
 
-
+// LS solution uses regex to a greater extent allowing for a more succint
+// solution. 
 

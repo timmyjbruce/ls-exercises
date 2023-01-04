@@ -47,11 +47,60 @@
 
 // Datastructure
 // ---------------------------------------------------------
-
 //
 
 // Algorithm
 // ---------------------------------------------------------
+
+// Start featured, set num
+// While num 
+//  Set maxNum to 9876543201
+//  Set num to num + 1
+//  If num is greater than maxNum, return and log supplied message
+//  If num % 2 is not equals to 0, continue the loop
+//  If num % 7 not equal to 0, continue the loop
+//  If checkDigitsUnique returns true, return num
+
+
+// Start checkDigitsUnique, set num
+// Set arr to an array of digits in num
+// Set index to 0
+// While index is les than arr's length
+// If array contains more than 1 of the value stored at index, return false
+// - Make a copy of the array
+// - Remove the target index from array
+// - Check if array still contains another element with the same value
+// - If it does return false
+
+// Return true
+
+
+// Code
+// ---------------------------------------------------------
+
+// Initial function, per algorithm
+
+function featured(num) {
+  const MAX_NUM = 9876543201;
+  if (num >= MAX_NUM) return 'There is no possible number that fulfills those requirements.';
+
+  while (true) {
+    num += 1;
+    if (num % 2 !== 1 || num % 7 !== 0) continue;
+    if (checkDigitsUnique(num)) return num;
+  }
+}
+
+function checkDigitsUnique(num) {
+  let arr = String(num).split('');
+
+  for (let idx = 0; idx < arr.length; idx++) {
+    let tempArr = arr.slice();
+    tempArr.splice(idx, 1);
+    if (tempArr.includes(arr[idx])) return false;
+  }
+  return true;
+}
 
 
 
@@ -66,8 +115,7 @@ console.log(featured(999999987));    // 1023456987
 console.log(featured(9876543186));   // 9876543201
 console.log(featured(9876543200));   // 9876543201
 console.log(featured(9876543201));   // "There is no possible number that fulfills those requirements."
-// Code
-// ---------------------------------------------------------
+
 
 
 // Thoughts / improvements
