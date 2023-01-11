@@ -29,7 +29,7 @@
 // console.log(isReserved('switch')); // should be: true
 
 
-// Solution ()
+// Solution (correct)
 // =============================================================================
 // The inner return statement only returns forEach's callback, not the
 // isReserved function. Declaring a top-level variable and re-assginging (if

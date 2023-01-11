@@ -54,7 +54,7 @@
 
 
 
-// Solution ()
+// Solution (correct)
 // =============================================================================
 
 let memberDirectory = {
@@ -65,7 +65,7 @@ let memberDirectory = {
 };
 
 function isValidName(name) {
-  return (/^\w+ \w+$/).test(name);
+  return(/^[A-Z][a-z]+\s+[A-Z][a-z]+$/).test(name); 
 }
 
 function isValidPhone(phone) {
@@ -80,12 +80,13 @@ function addMember(name, phone) {
   if (validMemberInfo(name, phone)) {
     memberDirectory[name] = phone;
   } else {
-    console.log('Invalid member information.');
+    console.log('Invalid member information\n' + name + ': ' + phone + '\n');
   }
 }
 
 addMember('Laura Carlisle', '444-2223');
 addMember('Rachel Garcia', '232-1191');
 addMember('Earl 5mith', '331-9191');
+addMember('E 3', '331-9191');
 
 console.log(memberDirectory);

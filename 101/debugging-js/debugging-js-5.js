@@ -32,7 +32,7 @@
 // console.log(range(5));
 
 
-// Solutions ()
+// Solutions (correct)
 // =============================================================================
 // There are two seperate functions, they need different names. Currently the
 // second 'range' function is being called twice. In both instances the function

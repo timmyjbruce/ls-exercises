@@ -60,7 +60,7 @@
 
 
 
-// Solution ()
+// Solution (correct)
 // =============================================================================
 // The delete keywords removes the assigned value, but not the element. Instead
 // it leaves an 'empty' uninitialised element in it's place. This is logged as
